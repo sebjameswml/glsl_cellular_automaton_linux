@@ -38,35 +38,35 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 }
 
 int main(){
-	GLFWwindow* window;
+    GLFWwindow* window;
 
-	// Init glfw
-	if(!glfwInit()){ return -1; }
+    // Init glfw
+    if(!glfwInit()){ return -1; }
 
-	// Use openGL 4.6, core profile
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    // Use openGL 4.6, core profile
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	// Create a window
-	window = glfwCreateWindow(1024,1024,"Agent simulation", nullptr, nullptr);
-	if (!window) {glfwTerminate(); return -1;}
-	glfwMakeContextCurrent(window);
+    // Create a window
+    window = glfwCreateWindow(1024,1024,"Agent simulation", nullptr, nullptr);
+    if (!window) {glfwTerminate(); return -1;}
+    glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSwapInterval(0);; // vsync
-	
-	// Init GLAD
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
+
+    // Init GLAD
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
 
     // Vertex position + UV + indice data (pos is screenspace)
     float verts[] = {
-       -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
+        -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
         1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
         1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
-       -1.0f,  1.0f, 0.0f, 0.0f, 1.0f
+        -1.0f,  1.0f, 0.0f, 0.0f, 1.0f
     };
     unsigned int indices[] = {
         0,1,2, // tri 1
@@ -108,9 +108,9 @@ int main(){
     glUniform1f(glGetUniformLocation(agent.ID, "turnSpeed"), 10.0f);
     computeShaderClass diffuseAndFade("GLSL_files/diffuseAndFade.glsl");
     diffuseAndFade.use();
-	glUniform1f(glGetUniformLocation(diffuseAndFade.ID, "pixelMult"), 0.1f);
-	glUniform1f(glGetUniformLocation(diffuseAndFade.ID, "newPixelMult"), 0.895f);
-	GLCall(glUniform1i(glGetUniformLocation(diffuseAndFade.ID, "size"), res));
+    glUniform1f(glGetUniformLocation(diffuseAndFade.ID, "pixelMult"), 0.1f);
+    glUniform1f(glGetUniformLocation(diffuseAndFade.ID, "newPixelMult"), 0.895f);
+    GLCall(glUniform1i(glGetUniformLocation(diffuseAndFade.ID, "size"), res));
 
     // Create some data to send to the compute shader
     struct shader_data_t
@@ -140,9 +140,9 @@ int main(){
     GLCall(glBufferData(GL_SHADER_STORAGE_BUFFER, sizeof(shader_data->xPos)*3, shader_data, GL_DYNAMIC_COPY));
 
     /*
-    void* p = glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_WRITE);
-    memcpy(p, &shader_data, sizeof(shader_data->xPos)*3);
-    GLCall(glUnmapBuffer(GL_SHADER_STORAGE_BUFFER));
+      void* p = glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_WRITE);
+      memcpy(p, &shader_data, sizeof(shader_data->xPos)*3);
+      GLCall(glUnmapBuffer(GL_SHADER_STORAGE_BUFFER));
     */
 
     // Make it possible to actually read/write to ssbo
@@ -205,5 +205,5 @@ int main(){
     }
 
     glfwTerminate();
-	return 0;
+    return 0;
 }

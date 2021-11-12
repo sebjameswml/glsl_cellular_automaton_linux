@@ -61,5 +61,5 @@ computeShaderClass::computeShaderClass(const char* path)
 
 void computeShaderClass::use() const
 {
-	glUseProgram(ID);
+    glUseProgram(ID);
 }

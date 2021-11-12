@@ -105,4 +105,3 @@ void shaderClass::setUniform2i(const std::string& name, int x, int y) const {
 void shaderClass::setUniform1i(const std::string& name, int x) const {
     glUniform1i(glGetUniformLocation(ID, name.c_str()), x);
 }
-

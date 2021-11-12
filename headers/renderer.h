@@ -9,5 +9,5 @@
 
 class renderer {
 public:
-	void draw(const VAO& vao, const IBO& ibo, const shaderClass& shader) const;
+    void draw(const VAO& vao, const IBO& ibo, const shaderClass& shader) const;
 };

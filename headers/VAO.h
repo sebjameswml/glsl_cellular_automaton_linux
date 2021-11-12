@@ -5,10 +5,10 @@
 
 class VAO {
 private:
-	unsigned int m_ID;
+    unsigned int m_ID;
 public:
-	VAO();
-	~VAO();
-	void addBuffer(const VBO& vb, const VBO_layout& layout);
-	void bind() const;
+    VAO();
+    ~VAO();
+    void addBuffer(const VBO& vb, const VBO_layout& layout);
+    void bind() const;
 };
