@@ -17,7 +17,7 @@ void VAO::addBuffer(const VBO& vb, const VBO_layout& layout) {
     bind();
     vb.bind();
     const auto& elements = layout.getElements();
-    unsigned int offset = 0;
+    unsigned long long int offset = 0;
     for (int i = 0; i < elements.size(); i++) {
         const auto& element = elements[i];
         GLCall(glEnableVertexAttribArray(i));
