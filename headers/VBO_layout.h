@@ -4,17 +4,17 @@
 #include "VBO.h"
 
 struct VBO_element {
-	unsigned int type;
-	unsigned int count;
-	unsigned char normalised;
+    unsigned int type;
+    unsigned int count;
+    unsigned char normalised;
 
-	static unsigned int getSizeOfType(unsigned int type) {
-		switch (type) {
-		case GL_FLOAT:			return 4;
-		case GL_UNSIGNED_INT:   return 4;
-		case GL_UNSIGNED_BYTE:  return 1;
-		}
-	}
+    static unsigned int getSizeOfType(unsigned int type) {
+        switch (type) {
+        case GL_FLOAT:			return 4;
+        case GL_UNSIGNED_INT:   return 4;
+        case GL_UNSIGNED_BYTE:  return 1;
+        }
+    }
 };
 
 class VBO_layout{
